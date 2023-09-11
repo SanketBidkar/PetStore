@@ -1,0 +1,33 @@
+{% include 'base/header.html' %}
+{% block content %}
+    {% if object %}
+        <div class="container">
+        <h4 style="text-align: center; margin-top: 20px; margin-bottom: 20px; ">PETS  DATA</h4>
+        <div class="row">
+            <h3>Search List</h3>
+            {% for obj in object %}
+            <div class="col-lg-3">
+                <div class="card" style="min-height: 200px; cursor: pointer;">
+                    <div class="card-body">
+                        <a href="{% url 'pet_details' pk=obj.pk %}"><p>{{ obj.name }}</p></a>
+                        <img height="150px" class="card-img-top" src="{{ obj.image.url }}">
+                        <p class="card-text">{{ obj.description }}</p>
+                        <p>Age is: {{ obj.age }}</p>
+                        <p><strong style="color: red;">Price: </strong>{{ obj.price }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    {% else %}
+        <h4>No such Product</h4>
+
+    {% endif %}
+
+
+
+
+
+{% endblock %}
+{% include 'base/footer.html' %}
